@@ -1,0 +1,30 @@
+<ion-card class="ion-activatable">
+  <ion-ripple-effect></ion-ripple-effect>
+  <ion-img [src]="place.cover"></ion-img>
+  <div id="top-content">
+    <ion-label class="flex-label">
+      <ion-icon name="location-outline"></ion-icon>
+      <ion-text>
+        <h3>{{ place.departament }}</h3>
+      </ion-text>
+    </ion-label>
+    <ion-icon id="favorite" name="bookmarks-outline"></ion-icon>
+  </div>
+  <ion-text id="title">
+    <h1>{{ place.name }}</h1>
+  </ion-text>
+  <div id="creator">
+    <ion-label class="flex-label">
+      <ion-icon name="logo-instagram"></ion-icon>
+      <ion-text class="inner-creator">
+        <h3>{{ place.creatorIG }}</h3>
+      </ion-text>
+    </ion-label>
+    <ion-label class="flex-label">
+      <ion-icon name="heart-outline"></ion-icon>
+      <ion-text class="inner-creator">
+        <h3>{{ place.likes }}</h3>
+      </ion-text>
+    </ion-label>
+  </div>
+</ion-card>

@@ -1,0 +1,21 @@
+.image-gallery-item {
+  margin: 3% 5% 3% 5%;
+  border-radius: 10px;
+}
+
+.roundedInput {
+  --border-color: var(--ion-color-primary);
+  --border-radius: 10px;
+  --border-width: 1px;
+  --box-shadow: 2px gray;
+  --highlight-height: 0;
+  margin: 5px;
+}
+
+.input {
+  width: 100%;
+}
+
+.icon {
+  border-radius: 10px;
+}

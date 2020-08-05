@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/my-trips"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Create New Place</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="createPlace()" [disabled]="!form.valid">
+        <ion-icon name="checkmark" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form">
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input formControlName="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Departament</ion-label>
+      <ion-select formControlName="departament" placeholder="Select One">
+        <ion-select-option *ngFor="let dep of departaments" [value]="dep.name"
+          >{{dep.name}}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+
+    <div class="cover-picker">
+      <ion-img class="cover-img" [src]="coverUrl" *ngIf="coverUrl"></ion-img>
+      <ion-button
+        color="primary"
+        *ngIf="!coverUrl"
+        (click)="takePicture('cover')"
+      >
+        <ion-icon name="camera" slot="start"></ion-icon>
+        <ion-label>Select Cover Image</ion-label>
+      </ion-button>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea formControlName="description"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Creator's IG</ion-label>
+      <ion-input formControlName="creatorIG"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Tags</ion-label>
+      <ion-select
+        multiple="true"
+        [(ngModel)]="selectedTags"
+        selected-text=""
+        [ngModelOptions]="{standalone: true}"
+      >
+        <ion-select-option *ngFor="let tag of default_tags" [value]="tag"
+          >{{tag.name}}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+    <div id="tags-container" *ngIf="selectedTags.length > 0">
+      <ion-list-header>Selected tags</ion-list-header>
+      <p>
+        <ion-chip color="tertiary" *ngFor="let tag of selectedTags">
+          <ion-label>{{tag.name}}</ion-label>
+        </ion-chip>
+      </p>
+    </div>
+
+    <ion-item>
+      <ion-label>Images for gallery</ion-label>
+      <ion-select
+        [(ngModel)]="imagesQuantity"
+        [ngModelOptions]="{standalone: true}"
+        (ionChange)="createGalleryItems(imagesQuantity)"
+        name="gallery-images"
+      >
+        <ion-select-option value="0">0</ion-select-option>
+        <ion-select-option value="1">1</ion-select-option>
+        <ion-select-option value="2">2</ion-select-option>
+        <ion-select-option value="3">3</ion-select-option>
+        <ion-select-option value="4">4</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <app-image-gallery-item
+      (takePicture)="takePicture($event)"
+      (deleteGalleryItem)="deleteGalleryItem($event)"
+      (getImageAuthor)="getImageAuthor($event)"
+      *ngFor="let img of galleryImages"
+      [img]="img"
+    ></app-image-gallery-item>
+  </form>
+</ion-content>

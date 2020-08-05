@@ -1,0 +1,71 @@
+<ion-content class="ion-no-padding">
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-margin-top">
+      <ion-col size="10">
+        <ion-searchbar placeholder="Find your place"></ion-searchbar>
+      </ion-col>
+      <ion-col size="1">
+        <ion-avatar>
+          <img
+            src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+          />
+        </ion-avatar>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-segment>
+        <ion-segment-button
+          (click)="presentPopover($event)"
+          value="Departament"
+        >
+          <ion-label>Departament</ion-label>
+        </ion-segment-button>
+        <ion-segment-button (click)="presentPopover($event)" value="Category">
+          <ion-label>Category</ion-label>
+        </ion-segment-button>
+        <ion-segment-button (click)="presentPopover($event)" value="Rating">
+          <ion-label>Rating</ion-label>
+        </ion-segment-button>
+        <ion-segment-button (click)="presentPopover($event)" value="Distance">
+          <ion-label>Distance</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-row>
+    <ion-row>
+      <!-- <ion-virtual-scroll [items]="places">
+        <ion-col
+          *virtualItem="let place"
+          size="6"
+          size-sm="4"
+          offset-sm="2"
+          class="ion-text-center"
+        >
+          <app-discover-card [place]="place"></app-discover-card>
+        </ion-col>
+      </ion-virtual-scroll> -->
+      <!-- <ion-col *ngFor="let place of places"  size="6" size-sm="4" offset-sm="2" class="ion-text-center ion-margin-bottom">
+        <app-discover-card [place]="place"></app-discover-card>
+      </ion-col> -->
+    </ion-row>
+  </ion-grid>
+
+  <!-- <ion-content id="all-places">
+    <ion-virtual-scroll id="all-places2" [items]="places">
+      <app-discover-card
+        *virtualItem="let place"
+        [place]="place"
+      ></app-discover-card>
+    </ion-virtual-scroll>
+  </ion-content> -->
+
+  <ion-virtual-scroll [items]="places" class="ion-no-padding">
+    <div class="row" *virtualItem="let place">
+      <div class="column">
+        <app-discover-card class="card" [place]="place"></app-discover-card>
+      </div>
+      <div class="column">
+        <app-discover-card [place]="place"></app-discover-card>
+      </div>
+    </div>
+  </ion-virtual-scroll>
+</ion-content>

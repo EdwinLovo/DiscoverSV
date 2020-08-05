@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">DiscoverSV</string>
+    <string name="title_activity_main">DiscoverSV</string>
+    <string name="package_name">com.discoversv.app</string>
+    <string name="custom_url_scheme">com.discoversv.app</string>
+</resources>
